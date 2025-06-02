@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdsgtme0jeg3h"]
+
+[ext_resource type="PackedScene" uid="uid://c8vvtkwihg678" path="res://game/Hare.tscn" id="1_swu4p"]
+
+[node name="WorldHare" type="Node2D"]
+
+[node name="Hare" parent="." instance=ExtResource("1_swu4p")]

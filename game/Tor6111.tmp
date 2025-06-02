@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b45ilqk20b5lu"]
+
+[ext_resource type="Script" path="res://game/Tortoise.gd" id="1_1ibjh"]
+[ext_resource type="Texture2D" uid="uid://vylwiapfnakn" path="res://assets/sprites/tortoise.png" id="1_bcjbn"]
+[ext_resource type="Script" path="res://game/CameraTortoise.gd" id="3_ghd35"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rcy1"]
+size = Vector2(32, 32)
+
+[node name="Tortoise" type="CharacterBody2D"]
+position = Vector2(640, 361)
+script = ExtResource("1_1ibjh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_bcjbn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7rcy1")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="CameraTortoise" type="Camera2D" parent="."]
+script = ExtResource("3_ghd35")

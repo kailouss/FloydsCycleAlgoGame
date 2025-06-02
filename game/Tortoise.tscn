@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://b45ilqk20b5lu"]
+
+[ext_resource type="Script" path="res://game/Tortoise.gd" id="1_1ibjh"]
+[ext_resource type="Texture2D" uid="uid://dyidrc5ce1muo" path="res://assets/sprites/Tortoise2.png" id="2_nm47k"]
+[ext_resource type="Script" path="res://game/CameraTortoise.gd" id="3_ghd35"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l7pnu"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_cuqr2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3edmx"]
+gradient = SubResource("Gradient_cuqr2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_becaf"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0.784314)
+color_ramp = SubResource("GradientTexture1D_3edmx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rcy1"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_776w3"]
+offsets = PackedFloat32Array(0, 0.538462)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e72uw"]
+gradient = SubResource("Gradient_776w3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Tortoise" type="CharacterBody2D"]
+position = Vector2(640, 361)
+script = ExtResource("1_1ibjh")
+
+[node name="SpeedParticcle" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_l7pnu")
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_becaf")
+texture = ExtResource("2_nm47k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.85966e-05, 2.86102e-06)
+scale = Vector2(0.999999, 1)
+texture = ExtResource("2_nm47k")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7rcy1")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="CameraTortoise" type="Camera2D" parent="."]
+script = ExtResource("3_ghd35")
+
+[node name="TortoiseLight" type="PointLight2D" parent="."]
+scale = Vector2(4, 4)
+texture = SubResource("GradientTexture2D_e72uw")

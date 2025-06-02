@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8vvtkwihg678"]
+
+[ext_resource type="Script" path="res://game/Hare.gd" id="1_6jvw3"]
+[ext_resource type="Texture2D" uid="uid://b4rve0soly1r7" path="res://assets/sprites/Hare2.png" id="2_houos"]
+[ext_resource type="Script" path="res://game/ClearBlindnessSkill.gd" id="3_dpyj1"]
+[ext_resource type="Script" path="res://game/CameraHare.gd" id="3_w8bvb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wtf3g"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ry14x"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g5kky"]
+gradient = SubResource("Gradient_ry14x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nb5mv"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0.784314)
+color_ramp = SubResource("GradientTexture1D_g5kky")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sogg2"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_cesx4"]
+offsets = PackedFloat32Array(0, 0.739645)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ll2vb"]
+gradient = SubResource("Gradient_cesx4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Hare" type="CharacterBody2D"]
+position = Vector2(641, 359)
+script = ExtResource("1_6jvw3")
+
+[node name="SpeedParticle" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wtf3g")
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_nb5mv")
+texture = ExtResource("2_houos")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.85966e-05, -1.85966e-05)
+scale = Vector2(0.999999, 0.999999)
+texture = ExtResource("2_houos")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sogg2")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="CameraHare" type="Camera2D" parent="."]
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+script = ExtResource("3_w8bvb")
+
+[node name="HareLight" type="PointLight2D" parent="."]
+z_index = 10
+scale = Vector2(4, 4)
+texture = SubResource("GradientTexture2D_ll2vb")
+
+[node name="ClearBlindnessSkill" type="Node" parent="."]
+script = ExtResource("3_dpyj1")

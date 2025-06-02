@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://s5es0d2dcfqm"]
+
+[ext_resource type="Script" path="res://main/Menu.gd" id="1_4mn7r"]
+[ext_resource type="FontFile" uid="uid://du2c5gigl2c4w" path="res://assets/fonts/ZOMBIES REBORN.ttf" id="2_v5emu"]
+
+[sub_resource type="Gradient" id="Gradient_qgqlf"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.510345, 0.731034, 0.848276, 1)
+colors = PackedColorArray(0.106237, 0.106237, 0.106237, 1, 0.280066, 0.280066, 0.280066, 1, 0.422064, 0.422064, 0.422064, 1, 0.523781, 0.523781, 0.523781, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yej81"]
+gradient = SubResource("Gradient_qgqlf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4qbum"]
+texture = SubResource("GradientTexture2D_yej81")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4mn7r")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4qbum")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 100.0
+offset_right = 820.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(0.705882, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_v5emu")
+theme_override_font_sizes/font_size = 200
+text = "HUNT!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 310.0
+offset_right = 765.0
+offset_bottom = 414.0
+alignment = 1
+
+[node name="StartButton" type="Button" parent="Panel/ButtonContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "START"
+
+[node name="QuitButton" type="Button" parent="Panel/ButtonContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "QUIT"

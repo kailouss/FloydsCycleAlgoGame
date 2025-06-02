@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd227kf6ruwab"]
+
+[ext_resource type="PackedScene" uid="uid://b45ilqk20b5lu" path="res://game/Tortoise.tscn" id="1_fbi28"]
+[ext_resource type="PackedScene" uid="uid://bkx5sip8xqbon" path="res://ui/TileMap.tscn" id="2_3qi8f"]
+
+[node name="WorldTortoise" type="Node2D"]
+
+[node name="Tortoise" parent="." instance=ExtResource("1_fbi28")]
+
+[node name="TileMap" parent="." instance=ExtResource("2_3qi8f")]

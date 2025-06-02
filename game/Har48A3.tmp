@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8vvtkwihg678"]
+
+[ext_resource type="Script" path="res://game/Hare.gd" id="1_6jvw3"]
+[ext_resource type="Texture2D" uid="uid://ykseurl68ish" path="res://assets/sprites/hare.png" id="1_wldww"]
+[ext_resource type="Script" path="res://game/CameraHare.gd" id="3_w8bvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sogg2"]
+size = Vector2(32, 32)
+
+[node name="Hare" type="CharacterBody2D"]
+position = Vector2(641, 359)
+script = ExtResource("1_6jvw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_wldww")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sogg2")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="CameraHare" type="Camera2D" parent="."]
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+script = ExtResource("3_w8bvb")
+
+[node name="SpeedLineParticles" type="GPUParticles2D" parent="."]
+
+[node name="WooshTrail" type="Line2D" parent="."]
+
+[node name="MovementTimer" type="Timer" parent="."]

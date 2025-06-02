@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp2rsdkpwclx"]
+
+[ext_resource type="Script" path="res://ui/HUD.gd" id="1_m5o10"]
+[ext_resource type="Script" path="res://ui/PreGameMessagePanel.gd" id="2_l3j8j"]
+[ext_resource type="FontFile" uid="uid://dtu6njd33e3a6" path="res://assets/fonts/Halloween Night.otf" id="4_r17ka"]
+
+[sub_resource type="Gradient" id="Gradient_qyecv"]
+offsets = PackedFloat32Array(0.717241, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2fumn"]
+gradient = SubResource("Gradient_qyecv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mw88r"]
+texture = SubResource("GradientTexture2D_2fumn")
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_m5o10")
+
+[node name="Seconds" type="Label" parent="."]
+texture_filter = 1
+texture_repeat = 2
+offset_left = 25.0
+offset_top = 1.0
+offset_right = 50.0
+offset_bottom = 24.0
+
+[node name="Minutes" type="Label" parent="."]
+texture_filter = 1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="AnnounceLabel" type="Label" parent="."]
+offset_left = 220.0
+offset_top = 130.0
+offset_right = 420.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0.705882, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.27451, 0.196078, 1)
+theme_override_fonts/font = ExtResource("4_r17ka")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillCooldownLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = 25.0
+offset_top = 325.0
+offset_right = 65.0
+offset_bottom = 348.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HareCountdownLabel" type="Label" parent="."]
+offset_left = 288.0
+offset_top = 148.0
+offset_right = 352.0
+offset_bottom = 212.0
+theme_override_colors/font_color = Color(0.705882, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_r17ka")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreGameMessagePanel" type="Panel" parent="."]
+texture_filter = 1
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mw88r")
+script = ExtResource("2_l3j8j")
+
+[node name="PreGameMessage" type="Label" parent="PreGameMessagePanel"]
+layout_mode = 0
+offset_top = 130.0
+offset_right = 640.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_r17ka")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
