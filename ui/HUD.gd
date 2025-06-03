@@ -15,8 +15,8 @@ func _ready():
 func start_timer():
 	time = 90.0
 	running = true
-	$SkillCooldownLabel.visible = true
-	$SkillCooldownLabel.text = "Skill: V"
+	#$SkillCooldownLabel.visible = true
+	#$SkillCooldownLabel.text = "Skill: V"
 
 func _process(delta) -> void:
 	if running:

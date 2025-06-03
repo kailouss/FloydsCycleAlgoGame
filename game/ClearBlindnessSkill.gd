@@ -9,8 +9,8 @@ const TOGGLE_DURATION := 1.0
 const COOLDOWN_DURATION := 5.0
 
 func _ready():
+	cooldown_label.text = "Skill: V"
 	original_color = darkness_modulate.color
-	#cooldown_label.visible = false
 
 func _input(event):
 	if event.is_action_pressed("clear_vision") and is_ready:
@@ -31,6 +31,6 @@ func clear_vision_once() -> void:
 		cooldown_label.text = "Skill CD: %d" % remaining
 		await get_tree().create_timer(1.0).timeout
 		remaining -= 1
-	cooldown_label.visible = false
+	cooldown_label.text = "Skill: V"
 	
 	is_ready = true
